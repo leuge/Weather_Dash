@@ -17,4 +17,5 @@ function makeRow(searchValue) {
             searchWeather(event.target.textContent)
         }
     }
-}
+    historyEl.appendChild(liEl);
+};
