@@ -115,3 +115,31 @@ function getForecast(searchValue) {
     });
 }
 
+function getUVIndex(lat, lon) {
+    fetch ("http://api.openweathermap.org/data/2.5/uvi?appid=d91f911bcf2c0f925fb6535547a5ddc9&lat=" + lat + "&lon=" + lon)
+    .then(function(response) {
+        return response.json();
+    }).then(function(data){
+        var bodyEl = document.querySelector(".card-body");
+        var uvEl = document.createElement("p");
+        uvEl.textContent = "UV Index: "
+        var buttonEl = document.createElement("span");
+        buttonEl.classList.add("btn", "btn-sm");
+        buttonEl.innerHTML = data.value;
+        
+        if(data.vlaue < 3) {
+            buttonEl.classList.add("btn-success");
+        }
+        else if (data.value < 7) {
+            buttonEl.classList.add("btn-warning");
+        }
+        else{
+            buttonEl.classList.add("btn-danger");
+        }
+
+        bodyEl.appendChild(uvEl);
+        uvEl.appendChild(buttonEl);
+    })
+}
+
+document.querySelector("#search-button").addEventListener("click", getSearchVal);
