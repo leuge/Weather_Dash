@@ -100,5 +100,18 @@ function getForecast(searchValue) {
                 var p2El = document.createElement("p");
                 p2El.classList.add("card-text");
                 p2El.textContent = "Humidity: " + data.list[i].main.humidity + "%";
+
+                colEl.appendChild(cardEl);
+                bodyEl.appendChild(titleEl);
+                bodyEl.appendChild(imgEl);
+                bodyEl.appendChild(windEl);
+                bodyEl.appendChild(humidityEl);
+                bodyEl.appendChild(p1El);
+                bodyEl.appendChild(p2El);
+                cardEl.appendChild(bodyEl);
+                forecastEl.appendChild(colEl);
+            }
         }
-    })
+    });
+}
+
